@@ -6,4 +6,4 @@ PKG php${php_v}-dom php${php_v}-exif php${php_v}-mbstring php${php_v}-extensions
 CP usr /
 CP root /
 
-CMD /root/bootstrap-wp.sh
+CMD sh /root/bootstrap-wp.sh
