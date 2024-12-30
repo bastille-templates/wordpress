@@ -1,4 +1,7 @@
-PKG php82-dom php82-exif php82-mbstring php82-extensions php82-pecl-libsodium php82-xml php82-zip php82-filter php82-gd php82-iconv php82-simplexml php82-xmlreader php82-zlib php82-pecl-imagick php82-pecl-mcrypt php82-bcmath wordpress
+ARG php_v=82
+
+# install required packages
+PKG php${php_v}-dom php${php_v}-exif php${php_v}-mbstring php${php_v}-extensions php${php_v}-pecl-libsodium php${php_v}-xml php${php_v}-zip php${php_v}-filter php${php_v}-gd php${php_v}-iconv php${php_v}-simplexml php${php_v}-xmlreader php${php_v}-zlib php${php_v}-pecl-imagick php${php_v}-pecl-mcrypt php${php_v}-bcmath wordpress
 
 CP usr /
 CP root /
