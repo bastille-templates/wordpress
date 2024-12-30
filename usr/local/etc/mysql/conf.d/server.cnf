@@ -1,0 +1,49 @@
+# Options specific to all server programs
+[server]
+
+# Options specific to MariaDB server programs
+[server-mariadb]
+
+#
+# Options for specific server tools
+#
+
+[mysqld]
+user				        = mysql
+bind-address			    = 127.0.0.1
+basedir				        = /usr/local
+net_retry_count			    = 16384
+log_error			        = /var/log/mysql/mysqld.err
+character-set-server        = utf8mb4
+collation-server            = utf8mb4_general_ci
+max_connections             = 200             
+max_allowed_packet          = 128M
+tmp_table_size              = 512M
+max_heap_table_size         = 512M
+innodb_buffer_pool_size     = 4G
+query_cache_size            = 64M
+slow-query-log              = 0
+slow-query-log-file         = /var/log/mysql/mysql-slow-query.log
+long-query-time             = 1
+
+# Options read by `mariadb_safe`
+# Renamed from [mysqld_safe] starting with MariaDB 10.4.6.
+[mariadb-safe]
+
+# Options read my `mariabackup`
+[mariabackup]
+
+# Options read by `mysql_upgrade`
+# Renamed from [mysql_upgrade] starting with MariaDB 10.4.6.
+[mariadb-upgrade]
+
+# Specific options read by the mariabackup SST method
+[sst]
+
+# Options read by `mysqlbinlog`
+# Renamed from [mysqlbinlog] starting with MariaDB 10.4.6.
+[mariadb-binlog]
+
+# Options read by `mysqladmin`
+# Renamed from [mysqladmin] starting with MariaDB 10.4.6.
+[mariadb-admin]

@@ -1,0 +1,32 @@
+server {
+    listen       443 ssl;
+    server_name  localhost;
+    root /usr/local/www/nginx;
+    index index.php index.html index.htm;
+
+    #charset koi8-r;
+    #access_log  logs/host.access.log  main;
+    #http2 on;
+    ssl_certificate /usr/local/etc/ssl/server-cert.pem;
+    ssl_certificate_key /usr/local/etc/ssl/server-key.pem;
+    ssl_session_cache shared:SSL:1m;
+    ssl_session_timeout  5m;
+    ssl_ciphers  HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        fastcgi_index index.php;
+        fastcgi_pass unix:/var/run/php-fpm.sock;
+        include /usr/local/etc/nginx/fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/local/www/nginx-dist;
+    }
+}

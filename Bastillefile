@@ -1,0 +1,6 @@
+PKG php82-dom php82-exif php82-mbstring php82-extensions php82-pecl-libsodium php82-xml php82-zip php82-filter php82-gd php82-iconv php82-simplexml php82-xmlreader php82-zlib php82-pecl-imagick php82-pecl-mcrypt php82-bcmath wordpress
+
+CP usr /
+CP root /
+
+CMD /root/bootstrap-wp.sh
