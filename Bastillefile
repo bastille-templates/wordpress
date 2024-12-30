@@ -6,4 +6,7 @@ PKG php${php_v}-dom php${php_v}-exif php${php_v}-mbstring php${php_v}-extensions
 CP usr /
 CP root /
 
+SERVICE php_fpm restart
+SERVICE nginx restart
+
 CMD sh /root/bootstrap-wp.sh
