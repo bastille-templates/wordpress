@@ -10,3 +10,6 @@ SERVICE php_fpm restart
 SERVICE nginx restart
 
 CMD sh /root/bootstrap-wp.sh
+
+RDR tcp 80 80
+RDR tcp 443 443
