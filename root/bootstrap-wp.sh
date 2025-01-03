@@ -13,7 +13,10 @@ sed -i '' -e s#username_here#wpuser# \
   -e s#database_name_here#wordpress# \
     /usr/local/www/wordpress/wp-config.php
 
-sed -i '' 's/localhost/127.0.0.1/' /usr/local/www/wordpress/wp-config.php
+sed -i '' 's|localhost|127.0.0.1|' /usr/local/www/wordpress/wp-config.php
+sed -i '' 's|;date.timezone =|date.timezone ="Asia/Jakarta"|' /usr/local/etc/php.ini
+sed -i '' 's|mysqli.default_socket =|mysqli.default_socket =\/var\/run\/mysql\/mysql.sock|' /usr/local/etc/php.ini
+sed -i '' 's|pdo_mysql.default_socket=|pdo_mysql.default_socket =\/var\/run\/mysql\/mysql.sock|' /usr/local/etc/php.ini
 
 ## import database
 mysql -u root -e "CREATE DATABASE IF NOT EXISTS wordpress;"
