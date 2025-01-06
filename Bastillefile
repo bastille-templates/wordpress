@@ -6,11 +6,13 @@ PKG php${php_v}-dom php${php_v}-exif php${php_v}-mbstring php${php_v}-extensions
 CP usr /
 CP root /
 
-chown -R www:www /usr/local/www/wordpress
-chmod -R 755 /usr/local/www/wordpress
+CMD chown -R www:www /usr/local/www/wordpress
+CMD chmod -R 755 /usr/local/www/wordpress
 
 SERVICE php_fpm restart
 SERVICE nginx restart
+
+CMD sh /root/bootstrap-wp.sh
 
 RDR tcp 80 80
 RDR tcp 443 443
