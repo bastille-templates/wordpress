@@ -25,7 +25,7 @@ mysql -u root -e "GRANT ALL PRIVILEGES on wordpress.* to wpuser@localhost"
 mysql -u root -e "FLUSH PRIVILEGES"
 
 pkg install -y expect
-DB_ROOT_PASSWORD=$(openssl rand -base64 32) && export DB_ROOT_PASSWORD && echo $DB_ROOT_PASSWORD > /root/db_root_pwd.txt
+DB_ROOT_PASSWORD=$(openssl rand -base64 12 | sed 's/^/@/g') && export DB_ROOT_PASSWORD && echo $DB_ROOT_PASSWORD > /root/db_root_pwd.txt
 
 SECURE_MYSQL=$(expect -c "
 set timeout 10
@@ -34,6 +34,10 @@ expect \"Switch to unix_socket authentication\"
 send \"n\r\"
 expect \"Change the root password?\"
 send \"n\r\"
+expect \"New password:\"
+send \"$DB_ROOT_PASSWORD\r\"
+expect \"Re-enter new password:\"
+send \"$DB_ROOT_PASSWORD\r\"
 expect \"Remove anonymous users?\"
 send \"y\r\"
 expect \"Disallow root login remotely?\"
