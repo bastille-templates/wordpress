@@ -31,9 +31,9 @@ SECURE_MYSQL=$(expect -c "
 set timeout 10
 spawn mysql_secure_installation
 expect \"Switch to unix_socket authentication\"
-send \"n\r\"
+send \"y\r\"
 expect \"Change the root password?\"
-send \"n\r\"
+send \"y\r\"
 expect \"New password:\"
 send \"$DB_ROOT_PASSWORD\r\"
 expect \"Re-enter new password:\"
